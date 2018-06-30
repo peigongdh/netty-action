@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Function:
  *
  * @author crossoverJie
- *         Date: 22/05/2018 14:46
+ * Date: 22/05/2018 14:46
  * @since JDK 1.8
  */
 @Controller
@@ -34,28 +34,29 @@ public class IndexController {
     private CounterService counterService;
 
     @Autowired
-    private HeartbeatClient heartbeatClient ;
+    private HeartbeatClient heartbeatClient;
 
     /**
      * 向服务端发消息
+     *
      * @param sendMsgReqVO
      * @return
      */
     @ApiOperation("客户端发送消息")
     @RequestMapping("sendMsg")
     @ResponseBody
-    public BaseResponse<SendMsgResVO> sendMsg(@RequestBody SendMsgReqVO sendMsgReqVO){
+    public BaseResponse<SendMsgResVO> sendMsg(@RequestBody SendMsgReqVO sendMsgReqVO) {
         BaseResponse<SendMsgResVO> res = new BaseResponse();
-        heartbeatClient.sendMsg(new CustomProtocol(sendMsgReqVO.getId(),sendMsgReqVO.getMsg())) ;
+        heartbeatClient.sendMsg(new CustomProtocol(sendMsgReqVO.getId(), sendMsgReqVO.getMsg()));
 
         // 利用 actuator 来自增
         counterService.increment(Constants.COUNTER_CLIENT_PUSH_COUNT);
 
-        SendMsgResVO sendMsgResVO = new SendMsgResVO() ;
-        sendMsgResVO.setMsg("OK") ;
-        res.setCode(StatusEnum.SUCCESS.getCode()) ;
-        res.setMessage(StatusEnum.SUCCESS.getMessage()) ;
-        res.setDataBody(sendMsgResVO) ;
-        return res ;
+        SendMsgResVO sendMsgResVO = new SendMsgResVO();
+        sendMsgResVO.setMsg("OK");
+        res.setCode(StatusEnum.SUCCESS.getCode());
+        res.setMessage(StatusEnum.SUCCESS.getMessage());
+        res.setDataBody(sendMsgResVO);
+        return res;
     }
 }

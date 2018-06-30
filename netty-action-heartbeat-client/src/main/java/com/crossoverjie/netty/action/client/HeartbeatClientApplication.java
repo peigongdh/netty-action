@@ -10,18 +10,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author crossoverJie
  */
 @SpringBootApplication
-public class HeartbeatClientApplication implements CommandLineRunner{
+public class HeartbeatClientApplication implements CommandLineRunner {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(HeartbeatClientApplication.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(HeartbeatClientApplication.class);
 
 
-
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(HeartbeatClientApplication.class, args);
-		LOGGER.info("启动 Client 成功");
-	}
+        LOGGER.info("启动 Client 成功");
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-	}
+    @Override
+    public void run(String... args) throws Exception {
+    }
 }

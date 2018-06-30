@@ -10,18 +10,18 @@ import org.springframework.context.annotation.Configuration;
  * Function:构建心跳使用的 bean
  *
  * @author crossoverJie
- *         Date: 24/05/2018 15:55
+ * Date: 24/05/2018 15:55
  * @since JDK 1.8
  */
 @Configuration
 public class HeartBeatConfig {
 
     @Value("${channel.id}")
-    private long id ;
+    private long id;
 
 
     @Bean(value = "heartBeat")
-    public CustomProtocol heartBeat(){
-        return new CustomProtocol(id,"ping") ;
+    public CustomProtocol heartBeat() {
+        return new CustomProtocol(id, "ping");
     }
 }

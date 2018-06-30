@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Function:
  *
  * @author crossoverJie
- *         Date: 22/05/2018 18:33
+ * Date: 22/05/2018 18:33
  * @since JDK 1.8
  */
 public class NettySocketHolder {

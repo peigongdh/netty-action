@@ -22,7 +22,7 @@ import java.util.UUID;
  * Function:
  *
  * @author crossoverJie
- *         Date: 22/05/2018 14:46
+ * Date: 22/05/2018 14:46
  * @since JDK 1.8
  */
 @Controller
@@ -30,7 +30,7 @@ import java.util.UUID;
 public class IndexController {
 
     @Autowired
-    private HeartBeatServer heartbeatClient ;
+    private HeartBeatServer heartbeatClient;
 
 
     /**
@@ -41,23 +41,24 @@ public class IndexController {
 
     /**
      * 向服务端发消息
+     *
      * @param sendMsgReqVO
      * @return
      */
     @ApiOperation("服务端发送消息")
     @RequestMapping("sendMsg")
     @ResponseBody
-    public BaseResponse<SendMsgResVO> sendMsg(@RequestBody SendMsgReqVO sendMsgReqVO){
+    public BaseResponse<SendMsgResVO> sendMsg(@RequestBody SendMsgReqVO sendMsgReqVO) {
         BaseResponse<SendMsgResVO> res = new BaseResponse();
-        heartbeatClient.sendMsg(new CustomProtocol(sendMsgReqVO.getId(),sendMsgReqVO.getMsg())) ;
+        heartbeatClient.sendMsg(new CustomProtocol(sendMsgReqVO.getId(), sendMsgReqVO.getMsg()));
 
         counterService.increment(Constants.COUNTER_SERVER_PUSH_COUNT);
 
-        SendMsgResVO sendMsgResVO = new SendMsgResVO() ;
-        sendMsgResVO.setMsg("OK") ;
-        res.setCode(StatusEnum.SUCCESS.getCode()) ;
-        res.setMessage(StatusEnum.SUCCESS.getMessage()) ;
-        res.setDataBody(sendMsgResVO) ;
-        return res ;
+        SendMsgResVO sendMsgResVO = new SendMsgResVO();
+        sendMsgResVO.setMsg("OK");
+        res.setCode(StatusEnum.SUCCESS.getCode());
+        res.setMessage(StatusEnum.SUCCESS.getMessage());
+        res.setDataBody(sendMsgResVO);
+        return res;
     }
 }

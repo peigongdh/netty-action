@@ -11,11 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HeartbeatServerApplication {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(HeartbeatServerApplication.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(HeartbeatServerApplication.class);
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(HeartbeatServerApplication.class, args);
-		LOGGER.info("启动 Server 成功");
-	}
+        LOGGER.info("启动 Server 成功");
+    }
 
 }
